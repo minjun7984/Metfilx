@@ -21,6 +21,7 @@ response (with HTTP STATUS)
 
 
 -2021/05/15
+
 multer을 이용한 파일업로드 시스템 구현 multer에서 제공하는 stoarage와 filefilter을 이용해 확장자에 따른 저장 위치와
 저장이 불가능한 파일을 분리함 
 
@@ -29,5 +30,5 @@ multer을 이용한 파일업로드 시스템 구현 multer에서 제공하는 s
 2. DB에 들어가지는 않는데 upload폴더에는 파일이 들어가는 현상 발생
 
 어려웠던 점
-postman으로 파일을 보냈을 때 MulterError: Unexpected field 에러가 계속 뜨는 현상 발생 upload.single() 부분을 upload.any()로 변경하니 
+1.postman으로 파일을 보냈을 때 MulterError: Unexpected field 에러가 계속 뜨는 현상 발생 upload.single() 부분을 upload.any()로 변경하니 
 파일이 제대로 업로드가 되기 시작함
