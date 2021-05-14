@@ -30,5 +30,6 @@ multer을 이용한 파일업로드 시스템 구현 multer에서 제공하는 s
 2. DB에 들어가지는 않는데 upload폴더에는 파일이 들어가는 현상 발생
 
 어려웠던 점
+
 1.postman으로 파일을 보냈을 때 MulterError: Unexpected field 에러가 계속 뜨는 현상 발생 upload.single() 부분을 upload.any()로 변경하니 
 파일이 제대로 업로드가 되기 시작함
