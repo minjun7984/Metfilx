@@ -127,7 +127,6 @@ app.post("/user/login", (req, res) =>{
 const storage = multer.diskStorage({
 	destination : function(req, file, cb) {
 		if(
-			file.mimetype == "image/jpeg" || 
 			file.mimetype == "image/jpg" || 
 			file.mimetype == "image/png"
 			){
@@ -152,28 +151,35 @@ const storage = multer.diskStorage({
 
 const fileFilter = (req, file, cb) => {
 	if(
-		file.mimetype == "image/jpeg"||  file.mimetype == "image/jpg" || file.mimetype == "image/png" ||
+		file.mimetype == "image/jpg" || file.mimetype == "image/png" ||
 		file.mimetype == "video/mp4" ||  file.mimetype == "video/avi" || file.mimetype == "video/mov" ||
 		file.mimetype == "video/ogg" ||  file.mimetype == "video/flv" || file.mimetype == "video/mkv" 
 	){
 		cb(null, true);
 	} else {
 		cb(null, false);
+		console.log("지원되지 않는 파일형식입니다.")
 	}
 }
 
 var upload = multer({ storage : storage, fileFilter : fileFilter });
 
-app.post('/file/', upload.any('fileupload'), (req, res) =>{
-	let ext = req.file.originalname;
-	let url = req.file.path;
-	let type = req.file.mimetype;
+app.post('/file/', upload.any('upload'), (req, res) =>{
+	console.log(req.files);
+	let ext = req.files[0].mimetype.split('/')[1];
+	let url = req.files[0].path;
+	let type = req.files[0].mimetype;
 	let status = '002';
+	console.log(ext);
+	console.log(url);
+	console.log(type);
+	console.log(status);
 	connection.query(
 		"INSERT INTO file(file_ext,file_url,file_type,file_status) VALUES(?,?,?,?)",
 		[ext,url,type,status],
 		(err) => {
 			if(err) {
+				console.log(err);
 				res.status(400).json({ result : "fail"});			
 			} else {
 				res.status(200).json({ result : "success"});
