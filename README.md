@@ -33,3 +33,10 @@ multer을 이용한 파일업로드 시스템 구현 multer에서 제공하는 s
 
 1.postman으로 파일을 보냈을 때 MulterError: Unexpected field 에러가 계속 뜨는 현상 발생 upload.single() 부분을 upload.any()로 변경하니 
 파일이 제대로 업로드가 되기 시작함
+
+//2021-05/21/
+DB에 넣기 성공 single()이 아니라 any()을 사용해줬기 때문에 req.files[]형태의 배열로 받아줘야했음
+
+AJAX 요청부분을 작성했는데 작동하지 않음 수정예정..
+
+오늘의 교훈 console을 찍어 에러를 찾자...컴퓨터는 거짓말을 안한다..
